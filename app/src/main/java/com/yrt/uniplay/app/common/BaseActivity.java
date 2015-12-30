@@ -1,12 +1,22 @@
 package com.yrt.uniplay.app.common;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.RelativeLayout;
+
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import org.xutils.x;
+
+import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
 /**
  * Project UniPlay
@@ -15,7 +25,7 @@ import org.xutils.x;
  * Date 2015/12/21 16:45
  * Desc 基本的Activity
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends MaterialNavigationDrawer {
 
     /**
      * Activity的状态
@@ -28,21 +38,82 @@ public abstract class BaseActivity extends AppCompatActivity {
     // Activity的当前状态
     public int activityState;
 
+    private YrtApplication mApplication;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // 添加AppManager中
         AppManager.getAppManager().addActivity(this);
         // 注入view, 这里注入后继承BaseActivity就可以不用再次注入了.
         x.view().inject(this);
-        init();
+        mApplication = (YrtApplication) x.app();
+
     }
 
     /**
-     * 初始化
+     * 初始化Toolbar
+     *
+     * @param toolbar
+     * @param title
+     * @param isBack
      */
-    public abstract void init();
+    protected void initToolbar(Toolbar toolbar, String title, boolean isBack) {
+        setSupportActionBar(toolbar);
+        setTitle(title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(isBack);
+        int colorPosition = SharedPrefsUtil.getValue(this, SharedPrefsUtil.COLOR, 0);
+        if (colorPosition == 0) {
+            initSystemBar(this, mApplication.getColors()[0], toolbar);
+            ThemeUtils.setSystemToolbarColor(this, mApplication.getColors()[0]);
+        } else {
+            initSystemBar(this, mApplication.getColors()[colorPosition], toolbar);
+            ThemeUtils.setSystemToolbarColor(this, mApplication.getColors()[colorPosition]);
+        }
+    }
+
+    public YrtApplication getYrtApplication() {
+        return mApplication;
+    }
+
+    @TargetApi(19)
+    private static void setTranslucentStatus(Activity activity, boolean on) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+
+    }
+
+    public void initSystemBar(Activity activity, int color, Toolbar toolbar) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(activity, true);
+        }
+        SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+        tintManager.setStatusBarTintEnabled(true);
+
+        tintManager.setNavigationBarTintEnabled(true);
+        // 使用颜色资源
+        tintManager.setStatusBarTintColor(color);
+
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(0, getStatusBarHeight(), 0, 0);
+        toolbar.setLayoutParams(lp);
+    }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
 
     /**
      * 向指定的handler中发送消息

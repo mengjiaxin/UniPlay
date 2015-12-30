@@ -28,16 +28,23 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:22.2.1'
     compile 'com.android.support:support-v4:22.2.1'
     // xutils
-    compile 'org.xutils:xutils:3.1.+'
+//    compile 'org.xutils:xutils:3.1.22'
     compile 'com.afollestad:material-dialogs:0.7.8.1'
-//    compile('com.mikepenz:materialdrawer:4.6.0@aar') {
-//        transitive = true
-//    }
+
     // FloatingActionButton
     compile 'com.melnykov:floatingactionbutton:1.3.0'
 
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     compile 'in.srain.cube:cube-sdk:1.0.44@aar'
+
+    // 视频播放
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    // 文字图片
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    // 系统状态栏
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    // 抽屉
+    compile 'it.neokree:MaterialNavigationDrawer:1.3.3'
 }
 
 

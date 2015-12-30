@@ -1,5 +1,6 @@
 package com.yrt.uniplay.app.activity;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,10 +39,11 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     private ILoginPresenter mPresenter;
 
     @Override
-    public void init() {
+    public void init(Bundle bundle) {
         mPresenter = new LoginPresenterImpl(this);
         mButton.setOnClickListener(this);
     }
+
 
     @Override
     public void showProgress() {
@@ -80,4 +82,5 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
                 break;
         }
     }
+
 }

@@ -2,6 +2,7 @@ package com.yrt.uniplay.app.common;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.text.TextUtils;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -12,6 +13,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.yrt.uniplay.app.R;
 
 import org.xutils.DbManager;
 import org.xutils.config.DbConfigs;
@@ -28,6 +30,11 @@ import java.io.File;
  */
 public class YrtApplication extends Application {
 
+    // 颜色的值
+    private int[] mColors;
+    // 颜色的名字
+    private String[] mColorNames;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -40,6 +47,8 @@ public class YrtApplication extends Application {
         x.Ext.init(this);
         // 设置debug模式
         x.Ext.setDebug(Constant.DEBUG);
+        // 初始化主题颜色
+        initColors();
 
         // 初始化本地数据库
 //        DbManager.DaoConfig daoConfig = new DbManager.DaoConfig();
@@ -71,5 +80,33 @@ public class YrtApplication extends Application {
 
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config.build());
+    }
+
+    /**
+     * 初始化颜色数组
+     */
+    private void initColors() {
+        // 初始化颜色的值
+        final TypedArray colorTa = getResources().obtainTypedArray(R.array.colors);
+        mColors = new int[colorTa.length()];
+        for (int i = 0; i < colorTa.length(); i++)
+            mColors[i] = colorTa.getColor(i, 0);
+        // 回收TypedArray，以便后面重用。在调用这个函数后，你就不能再使用这个TypedArray。
+        colorTa.recycle();
+
+        // 初始化颜色的名称
+        final TypedArray colorNameTa = getResources().obtainTypedArray(R.array.colors_name);
+        mColorNames = new String[colorNameTa.length()];
+        for (int i = 0; i < colorNameTa.length(); i++)
+            mColorNames[i] = colorNameTa.getString(i);
+        colorNameTa.recycle();
+    }
+
+    public int[] getColors() {
+        return mColors;
+    }
+
+    public String[] getColorNames() {
+        return mColorNames;
     }
 }

@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/yrt/uniplay/app/common/view/RentalsSunDrawable.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/yrt/uniplay/app/common/view/RentalsSunHeaderView.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/with_grid_view_item_image_list_grid.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/buildings.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/sky.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/sun.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/buildings.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/sky.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/sun.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/buildings.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/sky.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/sun.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/buildings.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/sky.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/sun.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/buildings.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/sky.png" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/sun.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/yrt/uniplay/app/adapter/HorizontalListViewAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/yrt/uniplay/app/common/SharedPrefsUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/yrt/uniplay/app/common/ThemeUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/yrt/uniplay/app/fragment/FragmentButton.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/yrt/uniplay/app/fragment/FragmentIndex.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/theme_example.png" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

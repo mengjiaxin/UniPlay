@@ -1,5 +1,6 @@
 package com.yrt.uniplay.app.example;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,16 +37,17 @@ public class JSONActivity extends BaseActivity implements JsonView, AdapterView.
 
     private IJsonPresenter mJsonPresenter;
 
-    @Override
-    public void init() {
-        mJsonPresenter = new JsonPresenterImpl(this);
-        mListView.setOnItemClickListener(this);
-    }
 
     @Override
     protected void onResume() {
         super.onResume();
         mJsonPresenter.onResume();
+    }
+
+    @Override
+    public void init(Bundle bundle) {
+        mJsonPresenter = new JsonPresenterImpl(this);
+        mListView.setOnItemClickListener(this);
     }
 
     @Override

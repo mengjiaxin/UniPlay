@@ -13,9 +13,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".example.ImageLoaderActivity"
-            android:label="@string/app_name">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +22,7 @@
         </activity>
 
         <activity android:name=".example.JSONActivity" />
+        <activity android:name=".activity.ThemeActivity" />
     </application>
 
 </manifest>

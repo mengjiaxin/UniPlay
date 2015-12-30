@@ -11,14 +11,12 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import org.xutils.x;
-
 /**
  * Project UniPlay
  * Package com.yrt.uniplay.app.adapter
  * Author Mengjiaxin
  * Date 2015/12/22 16:02
- * Desc 请用一句话来描述作用
+ * Desc 通用的ViewHolder
  */
 public class ViewHolder {
 

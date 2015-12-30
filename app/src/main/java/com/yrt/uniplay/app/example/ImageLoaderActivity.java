@@ -1,8 +1,7 @@
 package com.yrt.uniplay.app.example;
 
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.media.Image;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -73,7 +72,7 @@ public class ImageLoaderActivity extends BaseActivity {
     private GridView mGridView;
 
     @Override
-    public void init() {
+    public void init(Bundle bundle) {
         List<String> list = new ArrayList<>();
         for (int i = 0; i < urls.length; i++)
             list.add(urls[i]);
@@ -99,5 +98,7 @@ public class ImageLoaderActivity extends BaseActivity {
         ImageLoader.getInstance().clearDiskCache();
         ImageLoader.getInstance().clearMemoryCache();
     }
+
+
 }
 
